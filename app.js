@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var livereload = require('livereload');
 var connectLiveReload = require('connect-livereload');
+var serverless = require("serverless-http");
 var anime = require('animejs');
 
 
@@ -60,5 +61,6 @@ app.use(function(err, req, res, next) {
     status:err
   });
 });
+
 
 module.exports = app;
