@@ -31,7 +31,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(publicDirectory));
-app.use(express.static('public/javascripts'))
+app.use(express.static('public/javascripts'));
+app.use(express.static('node_modules/animejs/lib'))
 
 
 var indexRouter = require('./routes/index');

@@ -1,4 +1,3 @@
-import anime from "animejs";
 let bgImage = document.querySelector('.background-image');
 let imageGrid = document.querySelector('.image-grid');
 let linkArray = [
@@ -44,10 +43,13 @@ function cutImage(bgImage, imageGrid, gridDetails) {
             
             // pixel-container setting
             let tmpDiv = document.createElement('div');
-            tmpDiv.className = `pixel-container index-${index}`;
-            tmpDiv.onclick = () => {
-                animateAdjacent(index);
-            };
+            tmpDiv.className = `pixel-container`;
+            console.log(index);
+            tmpDiv.onclick = (function(index) {
+                return function() {
+                    animateAdjacent(index);
+                };
+            })(index);
             
             // base-color setting
             let baseColor = document.createElement('div')
@@ -56,8 +58,9 @@ function cutImage(bgImage, imageGrid, gridDetails) {
             // alternative image
 
             // appending everything together
-            tmpDiv.appendChild(bgImageCopy);
+            
             tmpDiv.appendChild(baseColor);
+            tmpDiv.appendChild(bgImageCopy);
 
             imageGrid.appendChild(tmpDiv);
             index++;
@@ -73,7 +76,8 @@ cutImage(bgImage, imageGrid, gridDetails);
 document.querySelector('.background-container').removeChild(document.querySelector('.background-image'));
 
 let count = 0;
-function animateAdjacent(index) {
+function animateAdjacent(i) {
+    console.log(i);
     anime({
         targets:".pixel-container",
         keyframes: [
@@ -82,9 +86,9 @@ function animateAdjacent(index) {
         ],
         delay: anime.stagger(50, {
             grid: [gridDetails.colNum, gridDetails.rowNum],
-            from: index
+            from: i
         })
-    })
+    });
 }
 
 // window.onresize = () => create
