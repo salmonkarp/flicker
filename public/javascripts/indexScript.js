@@ -44,7 +44,7 @@ function cutImage(bgImage, imageGrid, gridDetails) {
             // pixel-container setting
             let tmpDiv = document.createElement('div');
             tmpDiv.className = `pixel-container`;
-            console.log(index);
+            // console.log(index);
             tmpDiv.onclick = (function(index) {
                 return function() {
                     animateAdjacent(index);
@@ -70,14 +70,14 @@ function cutImage(bgImage, imageGrid, gridDetails) {
 
 // actual doing
 gridDetails = calculateDetails(imageGrid);
-console.log(gridDetails);
+// console.log(gridDetails);
 imageGrid.removeChild(imageGrid.querySelector('.test-div'));
 cutImage(bgImage, imageGrid, gridDetails);
 document.querySelector('.background-container').removeChild(document.querySelector('.background-image'));
 
 let count = 0;
 function animateAdjacent(i) {
-    console.log(i);
+    // console.log(i);
     anime({
         targets:".pixel-container",
         keyframes: [
